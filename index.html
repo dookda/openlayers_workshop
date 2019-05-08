@@ -1,0 +1,191 @@
+้
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" type="text/css">
+    <!-- The line below is only needed for old environments like Internet Explorer and Android 4.x -->
+    <script
+        src="https://cdn.polyfill.io/v2/polyfill.min.js?features=requestAnimationFrame,Element.prototype.classList,URL">
+    </script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">Navbar</a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adddata.html">addata</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Link</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body" id="map"></div>
+                    <div id="popup" class="ol-popup">
+                        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                        <div id="popup-content"></div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body">
+                        <label>base map </label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="osm" name="radio" checked>
+                            <label class="form-check-label">
+                                OSM
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="terrain" name="radio">
+                            <label class="form-check-label">
+                                Terrain
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="groad" name="radio">
+                            <label class="form-check-label">
+                                google road
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" value="ghybrid" name="radio">
+                            <label class="form-check-label">
+                                google hybrid
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="card">
+                    <div class="card-body">
+                        <label>overlay layers</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="province" id="defaultCheck1" checked>
+                            <label class="form-check-label" for="defaultCheck1">
+                                ขอบเขตจังหวัด
+                            </label><br>
+                            <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:province">
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="amphoe" id="defaultCheck2">
+                            <label class="form-check-label" for="defaultCheck2">
+                                ขอบเขตอำเภอ
+                            </label><br>
+                            <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:amphoe">
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="tambon" id="defaultCheck3">
+                            <label class="form-check-label" for="defaultCheck3">
+                                ขอบเขตตำบล
+                            </label><br>
+                            <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:tambon">
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="ways" id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck2">
+                                ถนน
+                            </label><br> <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:ways">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="village" id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck2">
+                                หมู่บ้าน
+                            </label><br> <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:village">
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="hospital" id="defaultCheck4">
+                            <label class="form-check-label" for="defaultCheck2">
+                                สถานพยาบาล
+                            </label>
+                            <!-- <br> <img
+                                src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:village"> -->
+                        </div>
+                    </div>
+                </div>
+
+                <p></p>
+
+                <div class="card">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Projection </label>
+                                <select class="form-control" id="projection">
+                                    <option value="EPSG:4326">EPSG:4326</option>
+                                    <option value="EPSG:3857">EPSG:3857</option>
+                                </select>
+                                <label>Precision </label>
+                                <input class="form-control" id="precision" type="number" min="0" max="12" value="4" />
+                                <div id="mouse-position"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- <button id='da'>dadad</button> -->
+    <!-- <select id="layer-select" onchange="onchange()">
+        <option value="Aerial">Aerial</option>
+        <option value="AerialWithLabels" selected>Aerial with labels</option>
+        <option value="Road">Road (static)</option>
+        <option value="RoadOnDemand">Road (dynamic)</option>
+        <option value="collinsBart">Collins Bart</option>
+        <option value="ordnanceSurvey">Ordnance Survey</option>
+    </select> -->
+
+</body>
+<script src="app.js"></script>
+
+</html>
