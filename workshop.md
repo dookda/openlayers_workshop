@@ -1,16 +1,21 @@
-// ################# 1 install ################
+# 1 install
+```bash
 npm install init
-npm install--save - dev parcel - bundler
-npm i--save ol
-npm i--save jquery
-
+npm install --save-dev parcel-bundler
+npm i --save ol
+npm i --save jquery
+```
+# add package.json
+```javascript
   // add package.json
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "parcel index.html",
     "build": "parcel build --public-url . index.html"
   }
-
+```
+# add craete app.js
+```javascript
 //   craete app.js
 window.$ = require('jquery');
 
@@ -163,7 +168,10 @@ const map = new Map({
   })
 });
 
-`
+```
+
+# add page
+```html
 <div class="container">
   <a class="navbar-brand" href="#">Navbar</a>
 
@@ -187,9 +195,11 @@ const map = new Map({
       </ul>
   </div>
 </div>
-`
+```
 
-// ################# 14 geojson ################
+
+# 14 geojson 
+```js
 import GeoJSON from 'ol/format/GeoJSON';
 import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
@@ -203,8 +213,10 @@ new VectorLayer({
     url: jsonPro
   })
 })
+```
 
-// ################# 15.1 attribute control ################
+# 15.1 attribute control
+```js
 import {
   defaults as defaultControls,
   Attribution
@@ -238,8 +250,10 @@ function checkSize() {
 window.addEventListener('resize', checkSize);
 checkSize();
 
+```
 
-// ################# 15.2 FullScreen control ################
+# 15.2 FullScreen control
+```js
 // control
 import {
   defaults as defaultControls,
@@ -263,29 +277,32 @@ const map = new Map({
     fullscreen
   ])
 });
-
+```
+```css
 // style.css
-.map: -moz - full - screen {
-    height: 100 % ;
+.map:-moz-full-screen {
+    height:100% ;
   }
 
-  .map: -webkit - full - screen {
-    height: 100 % ;
+  .map:-webkit-full-screen {
+    height:100% ;
   }
 
-  .map: -ms - fullscreen {
-    height: 100 % ;
+  .map:-ms-fullscreen {
+    height: 100% ;
   }
 
-  .map: fullscreen {
-    height: 100 % ;
+  .map:fullscreen {
+    height: 100% ;
   }
 
-  .ol - rotate {
-    top: 50 px;
+  .ol-rotate {
+    top: 50px;
   }
+```
 
-// ################# 15.3 MousePosition  control ################
+# 15.3 MousePosition  control
+```js
 // control
 import {
   defaults as defaultControls,
@@ -320,9 +337,8 @@ const map = new Map({
     mousePosition
   ])
 });
-
-// index.html
-`
+```
+```html
 <div class="card" style="width: 18rem;">
         <div class="card-body">
             <form>
@@ -339,8 +355,8 @@ const map = new Map({
             </form>
         </div>
     </div>
-  `
-
+```
+```js
 $('#projection').change((e) => {
   mousePosition.setProjection(e.target.value);
 });
@@ -349,8 +365,10 @@ $('#precision').change((e) => {
   const format = createStringXY(e.target.valueAsNumber);
   mousePosition.setCoordinateFormat(format);
 });
+```
 
-// ################# 15.4 Overview map ################
+# 15.4 Overview map 
+```js
 import {
   defaults as defaultControls,
   Attribution,
@@ -381,8 +399,10 @@ const map = new Map({
     overviewMap
   ])
 });
+```
 
-// ################# 15.5 zoom to extent ################
+# 15.5 zoom to extent 
+```js
 import {
   defaults as defaultControls,
   Attribution,
@@ -413,8 +433,10 @@ const map = new Map({
     zoomExtent
   ])
 });
+```
 
-// ################# 15.6 zoom to extent ################
+# 15.6 zoom to extent 
+```js
 import {
   defaults as defaultControls,
   Attribution,
@@ -445,8 +467,10 @@ const map = new Map({
     scaleLine
   ])
 });
+```
 
-// ################# 15.7 zoom slider ################
+# 15.7 zoom slider
+```js
 import {
   defaults as defaultControls,
   Attribution,
@@ -479,15 +503,17 @@ const map = new Map({
     zoomslider
   ])
 });
-
+```
+```css
 // style
-.ol - zoomslider {
-  top: 120 px;
+.ol-zoomslider {
+  top: 120px;
 }
+```
 
-// ################# 16. layer switcher ################
-// index.html
-`
+# 16. layer switcher 
+```html
+
 <div class="container">
         <div class="row mt-3">
             <div class=" col-sm-8">
@@ -505,10 +531,9 @@ const map = new Map({
             </div>
         </div>
 </div>
-`
+```
 
-// mouse position
-`                    
+```html                  
 <form>
   <div class="form-group">
       <label>Projection </label>
@@ -521,10 +546,10 @@ const map = new Map({
       <div id="mouse-position"></div>
   </div>
 </form>
-`
+```
 
-// ################# 16.2 สร้างตัวเลือกชั้นข้อมูล base map ################
-`
+# 16.2 สร้างตัวเลือกชั้นข้อมูล base map
+```html
 <div class="card-body">
   <label>base map </label>
   <div class="form-check">
@@ -558,7 +583,8 @@ const map = new Map({
       </label>
   </div>
 </div>
-`
+```
+```js
 // basemap
 // tile layer
 new TileLayer({
@@ -612,8 +638,9 @@ new TileLayer({
     })
   })
 
-// ################# 16.3 สร้างตัวเลือกชั้นข้อมูล overlay map ################
-`
+```
+# 16.3 สร้างตัวเลือกชั้นข้อมูล overlay map
+```html
                   <div class="card-body">
                         <label>overlay layers</label>
                         <div class="form-check">
@@ -666,8 +693,8 @@ new TileLayer({
                                 src="http://119.59.125.189:8080/mapservice/gistnu/ows?service=WMS&REQUEST=GetLegendGraphic&VERSION=1.0.0&FORMAT=image/png&WIDTH=20&HEIGHT=20&LAYER=gistnu:village"> -->
                         </div>
                     </div>
-`
-
+```
+```js
 // overlay layers
 $(':checkbox').click((e) => {
   let chk = e.currentTarget.checked;
@@ -683,11 +710,13 @@ $(':checkbox').click((e) => {
   })
 });
 
+```
 
-// ################# 17. popup ################
+# 17. popup 
+```js
 import Overlay from 'ol/Overlay';
-
-`
+```
+```html
 <div class="card">
   <div class="card-body" id="map"></div>
   <!-- popup -->
@@ -696,8 +725,9 @@ import Overlay from 'ol/Overlay';
       <div id="popup-content"></div>
   </div>
 </div>
-`
+```
 
+```js
 var container = document.getElementById(‘popup’);
 var content = document.getElementById(‘popup - content’);
 var closer = document.getElementById(‘popup - closer’);
@@ -723,14 +753,14 @@ map.on('singleclick', (e) => {
     '</code>';
   overlay.setPosition(coordinate);
 });
+```
 
-// style.css
-`
+```css
   .ol-popup {
   position: absolute;
-  background-color: white;
-  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
-  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  background-color:white;
+  -webkit-filter:drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter:drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #cccccc;
@@ -774,9 +804,9 @@ map.on('singleclick', (e) => {
 .ol-popup-closer:after {
   content: "✖";
 }
-`
-
-// ################# 18. getFeature ################
+```
+# 18. getFeature
+```js
 // popup
 // var container = document.getElementById('popup');
 // var content = document.getElementById('popup-content');
@@ -805,9 +835,10 @@ map.on('singleclick', (e) => {
     }
   })
 });
+```
+# 19. getLegend
+```html
 
-// ################# 19. getLegend ################
-`
               <div class="card">
                     <div class="card-body">
                         <label>overlay layers</label>
@@ -855,9 +886,10 @@ map.on('singleclick', (e) => {
                         </div>
                     </div>
                 </div>
-`
-// ################# 20. Draw and Modify  ################
-`
+```
+
+# 20. Draw and Modify
+```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -924,8 +956,9 @@ map.on('singleclick', (e) => {
 <script src="adddata.js"></script>
 
 </html>
-`
+```
 
+```js
 // adddata.js
 window.$ = require('jquery');
 
@@ -1032,8 +1065,10 @@ var drawPoly = new Draw({
 });
 map.addInteraction(drawPoly);
 
+```
 
-// create table
+# create table
+```sql
 CREATE TABLE public.digitize(
   gid serial not null,
   name_t character varying(50) COLLATE pg_catalog.
@@ -1045,17 +1080,19 @@ CREATE TABLE public.digitize(
   geom geometry(Geometry, 4326) NOT NULL,
   CONSTRAINT addfeature_digitize_pkey PRIMARY KEY(gid)
 )
+```
 
-
-// create node web api
+# create node web api
+```bash
 npm init
-npm i--save express
-npm i--save body - parser
-npm i--save cors
-npm i--save pg
+npm i --save express
+npm i --save body-parser
+npm i --save cors
+npm i --save pg
+```
 
-//  node_module สร้างไฟล์ชื่อ app.js  ใน
-
+#node_module สร้างไฟล์ชื่อ app.js  ใน
+```js
 const express = require(‘express’);
 const bodyParser = require(‘body - parser’);
 const cors = require(‘cors’);
@@ -1124,8 +1161,10 @@ app.post('/api/updatefeature', (req, res) => {
       });
     })
 });
+```
 
-// ################# 20. send to database  ################
+# 20. send to database
+```js
 drawPoly.on('drawend', (e) => {
   // console.log(e);
   let parser = new GeoJSON();
@@ -1204,3 +1243,4 @@ modifyPoly.on('modifyend', (e) => {
   })
 });
 map.addInteraction(modifyPoly);
+```
