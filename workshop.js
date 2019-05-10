@@ -321,8 +321,9 @@ const map = new Map({
   ])
 });
 
-// indexedDB.html
-`<div class="card" style="width: 18rem;">
+// index.html
+`
+<div class="card" style="width: 18rem;">
         <div class="card-body">
             <form>
                 <div class="form-group">
@@ -337,7 +338,8 @@ const map = new Map({
                 </div>
             </form>
         </div>
-    </div>`
+    </div>
+  `
 
 $('#projection').change((e) => {
   mousePosition.setProjection(e.target.value);
@@ -485,7 +487,8 @@ const map = new Map({
 
 // ################# 16. layer switcher ################
 // index.html
-`<div class="container">
+`
+<div class="container">
         <div class="row mt-3">
             <div class=" col-sm-8">
                 <div class="card">
@@ -501,7 +504,8 @@ const map = new Map({
                 </div>
             </div>
         </div>
-</div>`
+</div>
+`
 
 // mouse position
 `                    
@@ -683,14 +687,16 @@ $(':checkbox').click((e) => {
 // ################# 17. popup ################
 import Overlay from 'ol/Overlay';
 
-`<div class="card">
+`
+<div class="card">
   <div class="card-body" id="map"></div>
   <!-- popup -->
   <div id="popup" class="ol-popup">
       <a href="#" id="popup-closer" class="ol-popup-closer"></a>
       <div id="popup-content"></div>
   </div>
-</div>`
+</div>
+`
 
 var container = document.getElementById(‘popup’);
 var content = document.getElementById(‘popup - content’);
@@ -851,7 +857,8 @@ map.on('singleclick', (e) => {
                 </div>
 `
 // ################# 20. Draw and Modify  ################
-`<!DOCTYPE html>
+`
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
